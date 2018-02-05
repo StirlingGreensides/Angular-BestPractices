@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 
-import { DataRepositoryService } from "../services/data-repository"
+import { DataRepositoryService } from '../services/data-repository.service'
 
 @Component({
-  styleUrls: ['../styles/catalog.component.css'],
-  templateUrl: '../templates/catalog.component.html'
+  styleUrls: ['./catalog.component.css'],
+  templateUrl: './catalog.component.html'
 })
 export class CatalogComponent {
-  classes:any[];
-  visibleClasses:any[];
+  classes: any[];
+  visibleClasses: any[];
 
-  constructor(private dataRepository:DataRepositoryService) {}
+  constructor(private dataRepository: DataRepositoryService) {}
 
   ngOnInit() {
     this.dataRepository.getCatalog()
@@ -33,7 +33,7 @@ export class CatalogComponent {
       .subscribe(
         null,
         (err) => { console.error(err); classToDrop.processing = false}, //add a toast message or something
-        () => {classToDrop.processing = false; classToDrop.enrolled=false;}
+        () => { classToDrop.processing = false; classToDrop.enrolled = false; }
       );
   }
 
