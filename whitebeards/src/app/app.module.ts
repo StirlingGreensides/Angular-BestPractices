@@ -1,19 +1,16 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http'
-import { ReactiveFormsModule, FormsModule } from '@angular/forms'
+import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { appRoutes } from './routes'
+import { appRoutes } from './routes';
 import { AppComponent }  from './app.component';
-import { NavBarComponent }  from './nav-bar.component';
-import { CatalogComponent } from "./catalog/catalog.component";
 import { RegisterComponent } from "./users/register.component";
 import { SignInComponent } from "./users/sign-in.component";
-import { LoadingSpinnerComponent } from "./components/loading-spinner.component";
-import { UserRepositoryService } from "./services/user-repository.service";
-import { CatalogRepositoryService } from "./catalog/catalog-repository.service"
-import { AccountMenuComponent } from "./account-menu.component";
+import { CoreModule } from './core/core.module';
+import { ShareModule } from "./shared/share.module";
+import { CatalogModule } from 'app/catalog/catalog.module';
 
 @NgModule({
   imports:      [
@@ -21,18 +18,17 @@ import { AccountMenuComponent } from "./account-menu.component";
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
+    CoreModule,
+    ShareModule,
+    CatalogModule,
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [
     AppComponent,
-    NavBarComponent,
-    CatalogComponent,
     RegisterComponent,
-    SignInComponent,
-    LoadingSpinnerComponent,
-    AccountMenuComponent
+    SignInComponent
   ],
-  providers: [ UserRepositoryService, CatalogRepositoryService ],
+  providers: [  ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
