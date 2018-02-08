@@ -35,14 +35,18 @@ import { UserRepositoryService } from '../core/user-repository.service'
   
     registerUser(user) {
       this.saving=true;
+      this.saveAndRedirect(user);
+    }
+
+    cancel() {
+      this.router.navigate(['/']);
+    }
+  
+    private saveAndRedirect(user){
       this.userRepository.saveUser(user)
         .subscribe(
           null,
           ()=>this.saving=false,
           () => this.router.navigate(['/catalog']));
-    }
-  
-    cancel() {
-      this.router.navigate(['/']);
     }
   }
